@@ -1,0 +1,689 @@
+
+/* VARIABLES */
+
+:root {
+    --primary: #287D70;
+    --primary-dark: #206359;
+    --mint: #DDEFE7;
+    --background: #F8F7F2;
+    --white: #FFFFFF;
+    --sidebar: #E5F0EA;
+    --text: #23443E;
+    --text-secondary: #536B65;
+    --border: #C8DED5;
+    --danger: #B42318;
+    --danger-background: #FFF0ED;
+}
+
+/* ESTILOS GENERALES */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Nunito Sans", Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+}
+
+/* BARRA LATERAL */
+
+.sidebar {
+    background: var(--sidebar);
+    border-bottom: 1px solid var(--border);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sidebar-header h2 {
+    font-size: 1.2rem;
+}
+
+.new-chat {
+    background: var(--primary);
+    color: var(--white);
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.navigation ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.navigation a {
+    display: block;
+    min-height: 44px;
+    padding: 10px 12px;
+    border-radius: 8px;
+}
+
+.navigation a:hover,
+.navigation a.active {
+    background: #C9E3D9;
+}
+
+.sidebar-footer {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+}
+
+/* CONTENIDO PRINCIPAL */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.main-header {
+    font-weight: bold;
+}
+
+.main-header h1 {
+    font-size: 1.5rem;
+}
+
+/* AVISOS */
+
+.emergency-alert,
+.error-message {
+    background: var(--danger-background);
+    color: var(--danger);
+    border: 1px solid #EAC2BC;
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.prototype-notice {
+    background: #FFF8E6;
+    color: #765000;
+    border: 1px solid #E5D5A7;
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.helper-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* BIENVENIDA */
+
+.welcome {
+    text-align: center;
+    padding: 24px 0;
+}
+
+.welcome-icon {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    background: var(--mint);
+    color: var(--primary);
+    border-radius: 50%;
+    font-size: 36px;
+    margin: 0 auto 16px;
+}
+
+.welcome h1,
+.welcome h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.welcome p {
+    color: var(--text-secondary);
+}
+
+/* TARJETAS DE SERVICIOS */
+
+.services {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.service-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.service-icon {
+    font-size: 30px;
+}
+
+.service-card h2 {
+    font-size: 1.2rem;
+}
+
+.service-card p {
+    color: var(--text-secondary);
+}
+
+.service-card button {
+    background: none;
+    border: none;
+    color: var(--primary);
+    text-align: left;
+    font-weight: bold;
+    min-height: 44px;
+}
+
+.service-card .btn-primary {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+/* CONTENEDORES REUTILIZABLES */
+
+.services,
+.interaction,
+.conversation,
+.symptoms-form,
+.human-support,
+.main-footer {
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+}
+
+/* BOTONES */
+
+.btn-primary,
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--white);
+    border: 1px solid var(--primary);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: var(--white);
+    color: var(--primary-dark);
+    border: 1px solid var(--primary);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: var(--mint);
+}
+
+/* FORMULARIOS */
+
+.interaction,
+.chat-form,
+.symptoms-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.chat-form,
+.symptoms-form fieldset {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+fieldset {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+legend {
+    padding: 0 8px;
+    font-weight: bold;
+}
+
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--text);
+    min-height: 44px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.chat-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.chat-actions button {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    min-height: 44px;
+    padding: 10px 18px;
+}
+
+/* FORMULARIO DE SÍNTOMAS */
+
+.symptom-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.symptom-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    min-height: 48px;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary);
+}
+
+input[type="range"] {
+    width: 100%;
+    min-height: 44px;
+    accent-color: var(--primary);
+}
+
+.pain-labels {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* CONVERSACIÓN Y ESTADOS */
+
+.conversation {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.assistant-message {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.assistant-message,
+.error-message {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.loading-state {
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.response-sources {
+    background: var(--background);
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.response-sources a {
+    color: var(--primary-dark);
+    text-decoration: underline;
+    overflow-wrap: anywhere;
+}
+
+/* CONTROL HUMANO */
+
+.human-support {
+    text-align: center;
+    background: var(--mint);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.human-support h2 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.human-support .btn-secondary {
+    margin-top: 12px;
+}
+
+/* PIE DE PÁGINA */
+
+.main-footer {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.main-footer p {
+    margin-bottom: 8px;
+}
+
+/* TABLETS */
+
+@media (min-width: 768px) {
+    .main-content {
+        padding: 24px 32px;
+    }
+
+    .services,
+    .symptom-options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .welcome h1,
+    .welcome h2 {
+        font-size: 1.875rem;
+    }
+}
+
+/* COMPUTADORES */
+
+@media (min-width: 1024px) {
+    body {
+        flex-direction: row;
+    }
+
+    .sidebar {
+        width: 250px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        height: 100dvh;
+        overflow-y: auto;
+        border-right: 1px solid var(--border);
+        border-bottom: none;
+        padding: 24px 18px;
+    }
+
+    .navigation ul {
+        flex-direction: column;
+    }
+
+    .sidebar-footer {
+        margin-top: auto;
+    }
+
+    .main-content {
+        padding: 32px 40px;
+    }
+
+    .welcome h1,
+    .welcome h2 {
+        font-size: 2rem;
+    }
+
+    .service-card,
+    .assistant-message {
+        padding: 24px;
+    }
+}
+
+/* PANTALLAS GRANDES */
+
+@media (min-width: 1440px) {
+    .sidebar {
+        width: 280px;
+    }
+
+    .main-content {
+        padding: 32px 64px;
+    }
+}
+
+
+/* ========================================
+   MÓDULO FARMACÉUTICO - MOBILE FIRST
+======================================== */
+
+/* Formulario de búsqueda */
+
+.pharmacy-form {
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    min-height: 44px;
+    padding: 12px;
+
+    background: var(--white);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.form-group input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Resultados */
+
+.pharmacy-results {
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.results-header h2 {
+    font-size: 1.25rem;
+}
+
+.pharmacy-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+/* Tarjetas de farmacias */
+
+.pharmacy-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    min-width: 0;
+    padding: 20px;
+
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.pharmacy-card h3 {
+    font-size: 1.2rem;
+}
+
+.pharmacy-card header p {
+    color: var(--text-secondary);
+}
+
+.pharmacy-details {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.pharmacy-card .btn-secondary {
+    margin-top: auto;
+}
+
+/* Estados de disponibilidad */
+
+.availability {
+    align-self: flex-start;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.available {
+    background: var(--mint);
+    color: var(--primary-dark);
+}
+
+.unavailable {
+    background: var(--danger-background);
+    color: var(--danger);
+}
+
+.unknown {
+    background: #FFF8E6;
+    color: #765000;
+}
+
+/* Fuentes de información */
+
+.main-content > .response-sources {
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+    border: 1px solid var(--border);
+    padding: 16px;
+}
+
+.response-sources h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+/* TABLETS */
+
+@media (min-width: 768px) {
+
+    .pharmacy-form,
+    .pharmacy-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pharmacy-form > .btn-primary {
+        grid-column: 1 / -1;
+    }
+
+}
+
+/* COMPUTADORES */
+
+@media (min-width: 1200px) {
+
+    .pharmacy-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+}

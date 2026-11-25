@@ -1,0 +1,208 @@
+---
+config:
+  theme: base
+  themeVariables:
+    fontFamily: "Nunito Sans, Segoe UI, Arial, sans-serif"
+    fontSize: "15px"
+    primaryColor: "#DDEFE7"
+    primaryBorderColor: "#287D70"
+    primaryTextColor: "#23443E"
+    lineColor: "#536B65"
+    textColor: "#23443E"
+    background: "#F8F7F2"
+    clusterBkg: "#FFFFFF"
+    clusterBorder: "#C8DED5"
+    edgeLabelBackground: "#F8F7F2"
+  flowchart:
+    curve: basis
+    htmlLabels: true
+    nodeSpacing: 45
+    rankSpacing: 55
+    padding: 14
+---
+flowchart TB
+
+    %% ==================== TÍTULO ====================
+    TITULO["<b>Flujo de interacción —<br/>Asistente integral de salud</b><br/>Prototipo de orientación sanitaria<br/>y asistencia farmacéutica<br/>con supervisión humana"]
+
+    %% ==================== INICIO Y SELECCIÓN ====================
+    INICIO(["<b>Inicio</b><br/>El usuario accede a la aplicación"])
+    HOME["<b>Pantalla principal · Estado vacío</b><br/>Mensaje de bienvenida · sugerencias de consulta<br/>Aviso de límites de la inteligencia artificial<br/>Aviso de emergencia médica"]
+    MENU{"¿Cómo desea<br/>interactuar<br/>con el asistente?"}
+    LIBRE["Escribe una consulta libre"]
+    INTENCION{"¿El asistente<br/>identifica<br/>la intención?"}
+    ACLARA["Solicita una aclaración<br/>o presenta de nuevo<br/>las opciones disponibles"]
+
+    %% ==================== RAMA A ====================
+    subgraph MOD_A["<b>RAMA A · Módulo de orientación en salud</b>"]
+        direction TB
+        A1["<b>Estado vacío</b><br/>Bienvenida y opciones de consulta"]
+        A2["<b>Describe sus síntomas</b><br/>Conversación libre, preguntas guiadas<br/>o una combinación de ambas"]
+        A3["<b>Aporta información relevante</b><br/>Selección de síntomas · descripción libre<br/>Duración · escala de dolor de 0 a 10<br/>Información adicional<br/><i>El dolor no determina por sí solo la urgencia</i>"]
+        A4["Envía la consulta"]
+        A5["<b>⏳ Estado de carga</b><br/>«Consultando información…»"]
+        A6["El asistente procesa la información<br/>y consulta fuentes médicas confiables"]
+        A7{"¿Qué resultado<br/>se obtiene?"}
+        A8["<b>✔ Estado de respuesta</b><br/>Explicación general de los síntomas<br/>Posibles causas, sin certeza diagnóstica<br/>Cuidados generales respaldados por fuentes<br/>Señales de alarma · opciones de atención profesional<br/>Referencias médicas verificables<br/><i>Recordatorio: una valoración médica profesional<br/>es la forma adecuada de evaluar los síntomas</i>"]
+        A9["<b>❓ Estado de incertidumbre</b><br/>Reconoce que no dispone de información<br/>suficiente para orientar de forma confiable<br/><i>No es un fallo técnico</i>"]
+        A10["<b>✖ Estado de error técnico</b><br/>Informa con claridad que no pudo<br/>completar la consulta"]
+        A8D{"¿Qué desea<br/>hacer?"}
+        A8F["Consulta las fuentes<br/>de referencia"]
+        A9D{"¿Qué desea<br/>hacer?"}
+        A10D{"¿Qué desea<br/>hacer?"}
+    end
+
+    %% ==================== RAMA B ====================
+    subgraph MOD_B["<b>RAMA B · Módulo de asistencia farmacéutica</b>"]
+        direction TB
+        B1["<b>Estado vacío</b><br/>Buscador de medicamentos"]
+        B2["<b>Introduce los criterios de búsqueda</b><br/>Nombre del medicamento<br/>Concentración y presentación<br/>EPS · ciudad o municipio"]
+        B3["Envía la búsqueda"]
+        B4["<b>⏳ Estado de carga</b><br/>«Consultando inventarios…»"]
+        B5["El asistente consulta los inventarios oficiales<br/>de los operadores farmacéuticos<br/>correspondientes"]
+        B6{"¿Qué resultado<br/>se obtiene?"}
+        B7["<b>✔ Estado de respuesta · Tarjetas de resultados</b><br/>Establecimiento · sede · dirección · horario<br/>Medicamento consultado · convenio con la EPS<br/>Disponibilidad · fecha y hora de actualización<br/>Fuente de información · opción de contactar<br/><b>Disponibilidad por tarjeta, pueden coexistir:</b><br/>● Disponible · ○ Agotado · ◐ Sin confirmar"]
+        B8["<b>∅ Estado sin resultados</b><br/>No se encontraron establecimientos<br/>con esos criterios<br/><i>No significa necesariamente que el<br/>medicamento esté agotado · no es un error</i>"]
+        B9["<b>✖ Estado de error técnico</b><br/>No pudo consultar los inventarios<br/>y no puede confirmar la disponibilidad"]
+        B7D{"¿Qué desea<br/>hacer?"}
+        B7F["Filtra por disponibilidad y revisa<br/>el establecimiento, la fuente<br/>y la última actualización"]
+        B8D{"¿Qué desea<br/>hacer?"}
+        B9D{"¿Qué desea<br/>hacer?"}
+    end
+
+    %% ==================== CONTROL HUMANO ====================
+    subgraph ATENCION["<b>CONTROL HUMANO TRANSVERSAL</b>"]
+        HUMAN["<b>Atención humana · disponible en cualquier momento</b><br/>• Contactar a un profesional de salud<br/>• Consultar canales oficiales de la EPS<br/>• Consultar opciones de agendamiento médico<br/>• Contactar al operador farmacéutico<br/>• Contactar a un establecimiento farmacéutico<br/>• Buscar atención inmediata ante una emergencia<br/><i>Funcionalidades previstas para futuras<br/>integraciones · aún no conectadas</i>"]
+    end
+
+    %% ==================== EMERGENCIA ====================
+    subgraph EMERG["<b>RUTA PRIORITARIA · EMERGENCIA MÉDICA</b>"]
+        TRIG["<b>⚠ Posible señal de alarma</b><br/>o el usuario declara una emergencia"]
+        EM1["<b>⚠ Busca atención médica urgente ahora</b><br/>Sin completar el formulario<br/>ni esperar respuesta del asistente"]
+    end
+
+    %% ==================== FINAL ====================
+    RET{{"<b>Volver al inicio</b><br/>Conector ①"}}
+    RETIN{{"<b>Nueva consulta</b><br/>Conector ①"}}
+    END(["<b>Fin de la consulta</b>"])
+
+    %% ==================== PRINCIPIOS ====================
+    subgraph PRINC["<b>PRINCIPIOS TRANSVERSALES</b>"]
+        direction LR
+        P1["Seguridad del paciente<br/>Control y supervisión humana<br/>Transparencia<br/>Fuentes verificables<br/>Reconocimiento de incertidumbre"]
+        P2["Protección de datos personales y médicos<br/>Accesibilidad<br/>Autonomía del usuario<br/>No generación de información inventada<br/>Respeto por los límites de la IA"]
+    end
+
+    %% ==================== CONEXIONES ====================
+    TITULO ~~~ INICIO
+    INICIO --> HOME
+    RETIN --> HOME
+    HOME --> MENU
+    MENU -->|"Consultar síntomas"| A1
+    MENU -->|"Buscar medicamentos"| B1
+    MENU -->|"Escribir consulta libre"| LIBRE
+    MENU -.->|"Solicitar atención humana"| HUMAN
+    LIBRE --> INTENCION
+    INTENCION -->|"Orientación en salud"| A1
+    INTENCION -->|"Medicamentos"| B1
+    INTENCION -->|"No comprende"| ACLARA
+    ACLARA -->|"Vuelve a elegir"| MENU
+
+    A1 --> A2
+    A2 --> A3
+    A3 --> A4
+    A4 --> A5
+    A5 --> A6
+    A6 --> A7
+    A7 -->|"Información suficiente"| A8
+    A7 -->|"Información insuficiente"| A9
+    A7 -->|"Fallo técnico"| A10
+    A8 --> A8D
+    A8D -->|"Consultar las fuentes"| A8F
+    A8F -->|"Volver a las opciones"| A8D
+    A8D -->|"Continuar conversando<br/>o reformular"| A2
+    A8D -.->|"Buscar atención profesional"| HUMAN
+    A8D -->|"Finalizar"| END
+    A9 --> A9D
+    A9D -->|"Aportar información<br/>o reformular"| A2
+    A9D -.->|"Solicitar atención profesional"| HUMAN
+    A9D -->|"Finalizar"| END
+    A10 --> A10D
+    A10D -->|"Reintentar"| A5
+    A10D -.->|"Solicitar atención humana"| HUMAN
+    A10D -->|"Volver al inicio"| RET
+    A10D -->|"Finalizar"| END
+
+    B1 --> B2
+    B2 --> B3
+    B3 --> B4
+    B4 --> B5
+    B5 --> B6
+    B6 -->|"Hay establecimientos"| B7
+    B6 -->|"Sin resultados"| B8
+    B6 -->|"Fallo técnico"| B9
+    B7 --> B7D
+    B7D -->|"Filtrar o revisar<br/>fuente y actualización"| B7F
+    B7F -->|"Volver a las opciones"| B7D
+    B7D -->|"Nueva búsqueda"| B2
+    B7D -.->|"Contactar la farmacia"| HUMAN
+    B7D -->|"Finalizar"| END
+    B8 --> B8D
+    B8D -->|"Modificar criterios<br/>o nueva consulta"| B2
+    B8D -.->|"Contactar a la EPS<br/>o al operador"| HUMAN
+    B8D -->|"Finalizar"| END
+    B9 --> B9D
+    B9D -->|"Reintentar"| B4
+    B9D -.->|"Contactar a la EPS<br/>o al operador"| HUMAN
+    B9D -->|"Volver al inicio"| RET
+    B9D -->|"Finalizar"| END
+
+    MOD_A ==>|"En cualquier momento<br/>del recorrido médico"| TRIG
+    TRIG ==> EM1
+    MOD_A -.->|"En cualquier estado"| HUMAN
+    MOD_B -.->|"En cualquier estado"| HUMAN
+    EM1 -.->|"Buscar atención inmediata"| HUMAN
+    EM1 --> END
+    HUMAN -->|"Finalizar"| END
+    END ~~~ PRINC
+
+    %% ==================== ESTILOS ====================
+    classDef titulo fill:none,stroke:none,color:#23443E,font-size:24px
+    classDef terminal fill:#287D70,stroke:#206359,stroke-width:2px,color:#FFFFFF
+    classDef accion fill:#FFFFFF,stroke:#287D70,stroke-width:1.5px,color:#23443E
+    classDef vacio fill:#F8F7F2,stroke:#287D70,stroke-width:2px,stroke-dasharray:6 3,color:#23443E
+    classDef decision fill:#FFFFFF,stroke:#206359,stroke-width:2.5px,color:#23443E
+    classDef carga fill:#DDEFE7,stroke:#536B65,stroke-width:2px,stroke-dasharray:3 3,color:#23443E
+    classDef respuesta fill:#DDEFE7,stroke:#206359,stroke-width:3px,color:#23443E
+    classDef incert fill:#FFF8E6,stroke:#765000,stroke-width:3px,color:#765000
+    classDef error fill:#FFF0ED,stroke:#B42318,stroke-width:3px,stroke-dasharray:8 4,color:#B42318
+    classDef sinres fill:#F8F7F2,stroke:#536B65,stroke-width:3px,color:#23443E
+    classDef emerg fill:#FFF0ED,stroke:#B42318,stroke-width:4px,color:#B42318
+    classDef humano fill:#FFFFFF,stroke:#206359,stroke-width:3px,stroke-dasharray:8 4,color:#23443E
+    classDef conector fill:#FFFFFF,stroke:#206359,stroke-width:1.5px,stroke-dasharray:4 3,color:#23443E
+    classDef nota fill:#FFFFFF,stroke:#C8DED5,stroke-width:1.5px,color:#536B65
+
+    class TITULO titulo
+    class INICIO,END terminal
+    class LIBRE,ACLARA,A2,A3,A4,A6,A8F,B2,B3,B5,B7F accion
+    class HOME,A1,B1 vacio
+    class MENU,INTENCION,A7,A8D,A9D,A10D,B6,B7D,B8D,B9D decision
+    class A5,B4 carga
+    class A8,B7 respuesta
+    class A9 incert
+    class A10,B9 error
+    class B8 sinres
+    class TRIG,EM1 emerg
+    class HUMAN humano
+    class RET,RETIN conector
+        class P1,P2 nota
+
+    style MOD_A fill:#FFFFFF,stroke:#287D70,stroke-width:2px,color:#206359
+    style MOD_B fill:#FFFFFF,stroke:#287D70,stroke-width:2px,color:#206359
+    style ATENCION fill:#DDEFE7,stroke:#206359,stroke-width:2px,stroke-dasharray:8 4,color:#206359
+    style EMERG fill:#FFF0ED,stroke:#B42318,stroke-width:3px,color:#B42318
+    style PRINC fill:#F8F7F2,stroke:#C8DED5,stroke-width:1.5px,color:#536B65
+
+    linkStyle 60,61 stroke:#B42318,stroke-width:3.5px
+    linkStyle 7,26,30,34,49,53,57,62,63,64 stroke:#206359,stroke-width:2px
+    linkStyle 0,67 stroke:none,fill:none

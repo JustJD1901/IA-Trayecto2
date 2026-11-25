@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Asistente de salud | Inicio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- BARRA LATERAL -->
+
+    <aside class="sidebar">
+
+        <header class="sidebar-header">
+            <h2>Asistente de salud</h2>
+        </header>
+
+        <a href="index.html" class="new-chat">
+            + Nueva consulta
+        </a>
+
+        <nav class="navigation" aria-label="Navegación principal">
+            <ul>
+                <li>
+                    <a href="index.html" class="active" aria-current="page">
+                        Inicio
+                    </a>
+                </li>
+
+                <li>
+                    <a href="sintomas.html">
+                        Consultar síntomas
+                    </a>
+                </li>
+
+                <li>
+                    <a href="medicamentos.html">Buscar medicamentos</a>
+                </li>
+
+                <li>
+                    <a href="sintomas.html#atencion-humana">
+                        Atención humana
+                    </a>
+                </li>
+
+                <li>
+                    <a href="sintomas.html#fuentes">
+                        Fuentes de información
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <footer class="sidebar-footer">
+            <p>Privacidad y seguridad</p>
+            <p>Prototipo educativo</p>
+        </footer>
+
+    </aside>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+
+    <main class="main-content">
+
+        <header class="main-header">
+            <p>Inicio</p>
+        </header>
+
+
+        <!-- AVISO DE EMERGENCIA -->
+
+        <section class="emergency-alert" aria-label="Aviso de emergencia">
+
+            <strong>¿Tienes una emergencia médica?</strong>
+
+            <p>
+                Busca atención inmediata.
+                No esperes una respuesta del asistente.
+            </p>
+
+        </section>
+
+
+        <!-- BIENVENIDA -->
+
+        <section class="welcome">
+
+            <span class="welcome-icon" aria-hidden="true">♡</span>
+
+            <h1>¿Cómo podemos ayudarte hoy?</h1>
+
+            <p>
+                Estamos aquí para orientarte y facilitar
+                tu acceso a los servicios de salud.
+            </p>
+
+        </section>
+
+
+        <!-- SERVICIOS PRINCIPALES -->
+
+        <section class="services" aria-label="Servicios disponibles">
+
+            <article class="service-card" id="sintomas">
+
+                <span class="service-icon" aria-hidden="true">🩺</span>
+
+                <h2>Consultar síntomas</h2>
+
+                <p>
+                    Comprende tus síntomas, recibe información
+                    de referencia y conoce las opciones
+                    de atención profesional.
+                </p>
+
+                <a href="sintomas.html" class="btn-primary">
+                    Comenzar consulta →
+                </a>
+
+            </article>
+
+
+            <article class="service-card" id="medicamentos">
+
+                <span class="service-icon" aria-hidden="true">💊</span>
+
+                <h2>Buscar medicamentos</h2>
+
+                <p>
+                    Consulta la disponibilidad de medicamentos
+                    y encuentra establecimientos farmacéuticos.
+                </p>
+
+                <a href="medicamentos.html" class="btn-primary">
+                    Buscar medicamento →
+                </a>
+
+            </article>
+
+        </section>
+
+
+        <!-- ÁREA DE INTERACCIÓN -->
+
+        <section class="interaction" aria-label="Conversación">
+
+            <form class="chat-form">
+
+                <label for="message">
+                    Escribe tu consulta
+                </label>
+
+                <textarea id="message" name="message" placeholder="Cuéntanos qué necesitas..." rows="2"></textarea>
+
+                <p class="helper-text">
+                    Prototipo educativo. No introduzcas
+                    información personal o médica real.
+                </p>
+
+                <div class="chat-actions">
+
+                    <button type="button" disabled>
+                        Enviar ↑
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- CONTROL HUMANO -->
+
+            <section class="human-support" id="atencion-humana">
+
+                <h2>¿Necesitas atención profesional?</h2>
+
+                <p>
+                    Consulta las opciones de atención humana.
+                </p>
+
+                <a href="sintomas.html#atencion-humana" class="btn-secondary">
+                    Ver opciones de atención
+                </a>
+
+            </section>
+
+        </section>
+
+
+        <!-- PIE DE PÁGINA -->
+
+        <footer class="main-footer">
+
+            <p class="ai-disclaimer">
+                Este asistente está diseñado para utilizar
+                inteligencia artificial y puede cometer errores.
+                Una valoración médica profesional es la forma
+                adecuada de evaluar tus síntomas.
+                No sustituye el criterio médico ni el triage hospitalario.
+            </p>
+
+            <p>
+                Prototipo educativo sin IA conectada
+                ni fuentes de datos integradas.
+            </p>
+
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

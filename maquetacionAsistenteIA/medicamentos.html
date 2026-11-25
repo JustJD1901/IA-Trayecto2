@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistencia farmacéutica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+        <header class="sidebar-header">
+            <h2>Asistente de salud</h2>
+        </header>
+
+        <a href="index.html" class="new-chat">+ Nueva consulta</a>
+
+        <nav class="navigation" aria-label="Navegación principal">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sintomas.html">Consultar síntomas</a></li>
+                <li><a href="medicamentos.html" class="active" aria-current="page">Buscar medicamentos</a></li>
+                <li><a href="#atencion-humana">Atención humana</a></li>
+                <li><a href="#fuentes">Fuentes de información</a></li>
+            </ul>
+        </nav>
+
+        <footer class="sidebar-footer">
+            <p>Privacidad y seguridad</p>
+            <p>Prototipo educativo</p>
+        </footer>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+        <header class="main-header">
+            <h1>Asistencia farmacéutica</h1>
+        </header>
+
+        <p class="prototype-notice">
+            Prototipo educativo. Los establecimientos y los datos
+            de disponibilidad presentados son ficticios.
+        </p>
+
+        <!-- Bienvenida -->
+        <section class="welcome">
+            <span class="welcome-icon" aria-hidden="true">💊</span>
+            <h2>Encuentra tus medicamentos</h2>
+            <p>
+                Consulta la disponibilidad de tus medicamentos
+                y encuentra establecimientos farmacéuticos
+                antes de desplazarte.
+            </p>
+        </section>
+
+        <!-- Buscador -->
+        <form class="pharmacy-form">
+
+            <div class="form-group">
+                <label for="medication">Nombre del medicamento</label>
+                <input type="text" id="medication" placeholder="Ej. Acetaminofén">
+            </div>
+
+            <div class="form-group">
+                <label for="presentation">Concentración y presentación</label>
+                <input type="text" id="presentation" placeholder="Ej. 500 mg, tabletas">
+            </div>
+
+            <div class="form-group">
+                <label for="eps">Entidad de salud (EPS)</label>
+                <input type="text" id="eps" placeholder="Nombre de tu EPS">
+            </div>
+
+            <div class="form-group">
+                <label for="city">Ciudad o municipio</label>
+                <input type="text" id="city" placeholder="Ej. Medellín">
+            </div>
+
+            <button type="button" class="btn-primary" disabled>
+                Buscar medicamento
+            </button>
+
+        </form>
+
+        <!-- Resultados -->
+        <section class="pharmacy-results">
+
+            <header class="results-header">
+                <h2>Resultados de búsqueda</h2>
+                <p class="helper-text">Resultados ficticios de referencia.</p>
+            </header>
+
+            <!-- Filtros -->
+            <div class="form-group">
+                <label for="availability">Filtrar por disponibilidad</label>
+                <select id="availability" disabled>
+                    <option>Todos los establecimientos</option>
+                    <option>Disponible</option>
+                    <option>Agotado</option>
+                    <option>Sin confirmar</option>
+                </select>
+            </div>
+
+            <!-- Tarjetas de establecimientos -->
+            <div class="pharmacy-grid">
+
+                <article class="pharmacy-card">
+
+                    <header>
+                        <h3>Farmacia A</h3>
+                        <p>Sede Centro</p>
+                    </header>
+
+                    <span class="availability available">
+                        Disponible
+                    </span>
+
+                    <h4>Acetaminofén 500 mg</h4>
+
+                    <ul class="pharmacy-details">
+                        <li>Dirección: ubicación de ejemplo</li>
+                        <li>Horario: 8:00 a. m. - 6:00 p. m.</li>
+                        <li>Convenio: EPS de ejemplo</li>
+                        <li>Actualización: 10:30 a. m. (ficticia)</li>
+                    </ul>
+
+                    <p class="helper-text">
+                        Fuente: inventario ficticio.
+                    </p>
+
+                    <button type="button" class="btn-secondary" disabled>
+                        Contactar farmacia
+                    </button>
+
+                </article>
+
+                <article class="pharmacy-card">
+
+                    <header>
+                        <h3>Farmacia B</h3>
+                        <p>Sede Norte</p>
+                    </header>
+
+                    <span class="availability unavailable">
+                        Agotado
+                    </span>
+
+                    <h4>Acetaminofén 500 mg</h4>
+
+                    <ul class="pharmacy-details">
+                        <li>Dirección: ubicación de ejemplo</li>
+                        <li>Horario: 8:00 a. m. - 5:00 p. m.</li>
+                        <li>Convenio: EPS de ejemplo</li>
+                        <li>Actualización: 10:15 a. m. (ficticia)</li>
+                    </ul>
+
+                    <p class="helper-text">
+                        Fuente: inventario ficticio.
+                    </p>
+
+                    <button type="button" class="btn-secondary" disabled>
+                        Contactar farmacia
+                    </button>
+
+                </article>
+
+                <article class="pharmacy-card">
+
+                    <header>
+                        <h3>Farmacia C</h3>
+                        <p>Sede Sur</p>
+                    </header>
+
+                    <span class="availability unknown">
+                        Sin confirmar
+                    </span>
+
+                    <h4>Acetaminofén 500 mg</h4>
+
+                    <ul class="pharmacy-details">
+                        <li>Dirección: ubicación de ejemplo</li>
+                        <li>Horario: no confirmado</li>
+                        <li>Convenio: EPS de ejemplo</li>
+                        <li>Actualización: no disponible</li>
+                    </ul>
+
+                    <p class="helper-text">
+                        Fuente: inventario no disponible.
+                    </p>
+
+                    <button type="button" class="btn-secondary" disabled>
+                        Contactar farmacia
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- Estados visuales -->
+        <section class="conversation" aria-label="Ejemplos de estados">
+
+            <h2>Estados del buscador</h2>
+
+            <article class="assistant-message loading-state">
+                <h3>Consultando inventarios...</h3>
+                <p>Buscando información sobre la disponibilidad.</p>
+            </article>
+
+            <article class="assistant-message">
+                <h3>No se encontraron resultados</h3>
+                <p>
+                    No encontramos establecimientos que coincidan
+                    con los criterios de búsqueda. Esto no significa
+                    necesariamente que el medicamento esté agotado.
+                </p>
+            </article>
+
+            <article class="error-message">
+                <h3>No pudimos consultar el inventario</h3>
+                <p>
+                    No podemos confirmar la disponibilidad del
+                    medicamento en este momento.
+                </p>
+                <button type="button" class="btn-secondary" disabled>
+                    Reintentar
+                </button>
+            </article>
+
+        </section>
+
+        <!-- Fuentes -->
+        <section class="response-sources" id="fuentes">
+            <h2>Fuentes de información</h2>
+            <p>
+                La disponibilidad deberá obtenerse de los inventarios
+                oficiales de los operadores farmacéuticos y las EPS.
+                Actualmente no existen fuentes conectadas al prototipo.
+            </p>
+        </section>
+
+        <!-- Control humano -->
+        <section class="human-support" id="atencion-humana">
+            <h2>¿Necesitas ayuda con tus medicamentos?</h2>
+            <p>
+                Contacta a tu EPS o a tu operador farmacéutico
+                para confirmar la disponibilidad y dispensación.
+            </p>
+            <button type="button" class="btn-secondary" disabled>
+                Contactar a un profesional
+            </button>
+        </section>
+
+        <!-- Límites -->
+        <footer class="main-footer">
+            <p>
+                La inteligencia artificial puede cometer errores.
+                Confirma la disponibilidad antes de desplazarte.
+                Este asistente no prescribe medicamentos ni modifica
+                tratamientos médicos.
+                Consulta siempre a un profesional de salud.
+            </p>
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

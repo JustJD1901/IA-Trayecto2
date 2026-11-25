@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orientación en salud</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+        <header class="sidebar-header">
+            <h2>Asistente de salud</h2>
+        </header>
+
+        <a href="index.html" class="new-chat">+ Nueva consulta</a>
+
+        <nav class="navigation" aria-label="Navegación principal">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sintomas.html" class="active" aria-current="page">Consultar síntomas</a></li>
+                <li><a href="medicamentos.html">Buscar medicamentos</a></li>
+                <li><a href="#atencion-humana">Atención humana</a></li>
+                <li><a href="#fuentes">Fuentes de información</a></li>
+            </ul>
+        </nav>
+
+        <footer class="sidebar-footer">
+            <p>Privacidad y seguridad</p>
+            <p>Prototipo educativo</p>
+        </footer>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+        <header class="main-header">
+            <h1>Orientación en salud</h1>
+        </header>
+
+        <!-- Aviso de emergencia -->
+        <section class="emergency-alert">
+            <strong>¿Tienes una emergencia médica?</strong>
+            <p>Busca atención inmediata. No esperes una respuesta del asistente.</p>
+        </section>
+
+        <p class="prototype-notice">
+            Prototipo educativo. No introduzcas información médica real.
+            Los contenidos son ejemplos estáticos.
+        </p>
+
+        <!-- Estado vacío -->
+        <section class="welcome">
+            <h2>¿Cómo te sientes hoy?</h2>
+            <p>Cuéntanos tus síntomas para recibir información y orientación.</p>
+        </section>
+
+        <!-- Formulario de consulta -->
+        <form class="symptoms-form">
+
+            <fieldset>
+                <legend>¿Qué síntomas presentas?</legend>
+
+                <div class="symptom-options">
+                    <label class="symptom-option"><input type="checkbox"> Dolor de cabeza</label>
+                    <label class="symptom-option"><input type="checkbox"> Fiebre</label>
+                    <label class="symptom-option"><input type="checkbox"> Tos</label>
+                    <label class="symptom-option"><input type="checkbox"> Congestión nasal</label>
+                    <label class="symptom-option"><input type="checkbox"> Náuseas</label>
+                    <label class="symptom-option"><input type="checkbox"> Dolor abdominal</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Duración de los síntomas</legend>
+                <label for="duration">¿Desde cuándo tienes molestias?</label>
+                <select id="duration" name="duration">
+                    <option value="">Selecciona una opción</option>
+                    <option>Hace unas horas</option>
+                    <option>Desde ayer</option>
+                    <option>Hace varios días</option>
+                    <option>Hace más de una semana</option>
+                    <option>No estoy seguro</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Intensidad del dolor</legend>
+                <label for="pain">Selecciona un valor del 0 al 10</label>
+                <input type="range" id="pain" name="pain" min="0" max="10" value="0">
+
+                <div class="pain-labels">
+                    <span>0 - Sin dolor</span>
+                    <span>10 - Máximo dolor imaginable</span>
+                </div>
+
+                <p class="helper-text">
+                    La intensidad del dolor no determina por sí sola la urgencia médica.
+                </p>
+            </fieldset>
+
+            <label for="description">Información adicional</label>
+            <textarea id="description" rows="4" placeholder="Describe tus molestias..."></textarea>
+
+            <button type="button" class="btn-primary" disabled>
+                Consultar
+            </button>
+        </form>
+
+        <!-- Estados visuales de referencia -->
+        <section class="conversation" aria-label="Ejemplos de estados">
+
+            <h2>Estados del asistente</h2>
+
+            <!-- Estado de carga -->
+            <article class="assistant-message loading-state">
+                <h3>Consultando información...</h3>
+                <p>Ejemplo visual del estado de carga.</p>
+            </article>
+
+            <!-- Estado de respuesta -->
+            <article class="assistant-message">
+                <h3>Orientación general de ejemplo</h3>
+
+                <p>
+                    La congestión nasal y los estornudos pueden estar
+                    asociados con diferentes condiciones, como resfriados
+                    o alergias. Estos síntomas no permiten establecer
+                    un diagnóstico.
+                </p>
+
+                <p>
+                    Consulta a un profesional de salud para obtener
+                    una valoración adecuada.
+                </p>
+
+                <section class="response-sources" id="fuentes">
+                    <h4>Fuentes de referencia</h4>
+                    <a href="https://medlineplus.gov/spanish/commoncold.html">
+                        MedlinePlus - Resfriado común
+                    </a>
+                </section>
+            </article>
+
+            <!-- Estado de error -->
+            <article class="error-message">
+                <h3>No pudimos completar tu consulta</h3>
+                <p>No podemos proporcionar información confiable en este momento.</p>
+                <button type="button" class="btn-secondary" disabled>Reintentar</button>
+            </article>
+
+            <!-- Estado de incertidumbre -->
+            <article class="assistant-message">
+                <h3>Información insuficiente</h3>
+                <p>
+                    No dispongo de información suficiente para orientarte.
+                    Te recomiendo consultar a un profesional de salud.
+                </p>
+            </article>
+
+        </section>
+
+        <!-- Control humano -->
+        <section class="human-support" id="atencion-humana">
+            <h2>¿Necesitas atención profesional?</h2>
+            <p>Consulta los canales oficiales de atención de tu EPS.</p>
+            <button type="button" class="btn-secondary" disabled>
+                Contactar a un profesional
+            </button>
+        </section>
+
+        <!-- Aviso de límites -->
+        <footer class="main-footer">
+            <p>
+                La inteligencia artificial puede cometer errores.
+                Consulta siempre a un profesional de salud.
+                Este asistente no realiza diagnósticos ni sustituye
+                el criterio médico o el triage hospitalario.
+            </p>
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
